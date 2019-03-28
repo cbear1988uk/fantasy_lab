@@ -35,4 +35,8 @@ public abstract class Hero {
     public int getGold() {
         return gold;
     }
+
+    public void takeGold(int amount){
+        this.gold += amount;
+    }
 }

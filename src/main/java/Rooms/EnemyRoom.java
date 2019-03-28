@@ -1,11 +1,12 @@
 package Rooms;
 
+import Interfaces.IClear;
 import enemies.Enemy;
 import enemies.Goblin;
 
 import java.util.ArrayList;
 
-public class EnemyRoom {
+public class EnemyRoom implements IClear {
 
     private Enemy enemy;
     private boolean isClear;
@@ -15,7 +16,17 @@ public class EnemyRoom {
         this.enemy = enemy;
     }
 
+    public boolean isClear() {
+        return isClear;
+    }
+
     public Enemy getEnemy() {
         return enemy;
+    }
+
+    public void checkIfClear() {
+        if (enemy.getHitPoints() <= 0){
+            this.isClear = true;
+        }
     }
 }
