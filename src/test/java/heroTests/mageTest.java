@@ -1,5 +1,6 @@
 package heroTests;
 
+import enemies.Goblin;
 import enums.mageType;
 import heroes.Mage;
 import org.junit.Before;
@@ -14,12 +15,14 @@ public class mageTest {
     Mage mage;
     Spell spell;
     Companion companion;
+    Goblin goblin;
 
     @Before
     public void setUp() {
         mage = new Mage("Harry Potter", mageType.WIZARD);
         spell = new Spell("Fireball", 40);
         companion = new Companion("Gibberling", 10);
+        goblin = new Goblin();
     }
 
     @Test
@@ -43,5 +46,18 @@ public class mageTest {
         mage.addCompanion(companion);
         assertEquals(companion, mage.getCompanion());
     }
+
+    @Test
+    public void canAttack(){
+        mage.addSpell(spell);
+        mage.attack(goblin);
+        assertEquals(10, goblin.getHitPoints());
+    }
+
+//    @Test
+//    public void canBlockSomeDamage(){
+//        goblin.attack(mage);
+//        assertEquals(90, mage.getHitPoints());
+//    }
 
 }

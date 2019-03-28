@@ -1,5 +1,7 @@
 package heroes;
 
+import enemies.Enemy;
+import enemies.Goblin;
 import enums.fighterType;
 import items.Weapon;
 
@@ -29,5 +31,10 @@ public class Fighter extends Hero{
 
     public void addWeapon(Weapon weapon) {
         this.weapon = weapon;
+    }
+
+    public void attack(Enemy enemy) {
+        int attackTotal = this.baseDamage + this.weapon.getDamage();
+        enemy.reduceHealth(attackTotal);
     }
 }

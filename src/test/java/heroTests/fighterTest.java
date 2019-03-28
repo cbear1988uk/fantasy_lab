@@ -1,5 +1,6 @@
 package heroTests;
 
+import enemies.Goblin;
 import enums.fighterType;
 import enums.weaponType;
 import heroes.Fighter;
@@ -14,11 +15,14 @@ public class fighterTest {
 
     Fighter fighter;
     Weapon weapon;
+    Goblin goblin;
 
     @Before
     public void setUp() {
         fighter = new Fighter("Gimli", fighterType.DWARF);
         weapon = new Weapon("Death Bringer", weaponType.SWORD, 10);
+        goblin = new Goblin();
+
     }
 
     @Test
@@ -45,6 +49,30 @@ public class fighterTest {
     public void canAddWeapon(){
         fighter.addWeapon(weapon);
         assertEquals(weapon, fighter.getWeapon());
+    }
+
+    @Test
+    public void canAttackEnemy(){
+        fighter.addWeapon(weapon);
+        fighter.attack(goblin);
+        assertEquals(13, goblin.getHitPoints());
+    }
+
+    @Test
+    public void canIncreaseHealth(){
+        fighter.increaseHealth(100);
+        assertEquals(250, fighter.getHitPoints());
+    }
+
+    @Test
+    public void canDecreaseHealth(){
+        fighter.reduceHealth(100);
+        assertEquals(50, fighter.getHitPoints());
+    }
+
+    @Test
+    public void startsWithNoGold(){
+        assertEquals(0, fighter.getGold());
     }
 
 }

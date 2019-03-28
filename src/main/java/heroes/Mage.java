@@ -1,5 +1,7 @@
 package heroes;
 
+import enemies.Enemy;
+import enemies.Goblin;
 import enums.mageType;
 import items.Companion;
 import items.Spell;
@@ -34,4 +36,9 @@ public class Mage extends Hero {
     public Companion getCompanion() {
         return companion;
     }
+
+    public void attack(Enemy enemy) {
+        enemy.reduceHealth(this.spell.getDamage());
+    }
+
 }
